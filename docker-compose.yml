@@ -1,20 +1,29 @@
-version: '3.8'
+version: '3.9'
 
 services:
   api:
     build:
       context: .
       dockerfile: ovipraktarkezeloseged/Dockerfile
+
+    container_name: api
+
     ports:
       - "8080:8080"
+
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
+
       ConnectionStrings__DefaultConnection: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD}
+
+    depends_on:
+      - db   # csak akkor jó, HA ugyanabban a compose-ban van DB is
+
     networks:
       - app-network
 
+
 networks:
-  default:
+  app-network:
     external: true
-    name: app-network
