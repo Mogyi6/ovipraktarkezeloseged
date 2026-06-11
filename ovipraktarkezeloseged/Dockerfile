@@ -4,11 +4,11 @@ WORKDIR /src
 
 # copy solution and project files (cache friendly)
 # build context is repository root, so these relative paths exist
-COPY *.sln ./
-COPY Logic/*.csproj Logic/
-COPY Models/*.csproj Models/
-COPY Repository/*.csproj Repository/
-COPY ovipraktarkezeloseged/*.csproj ovipraktarkezeloseged/
+COPY ./*.sln ./
+COPY ./Logic/*.csproj Logic/
+COPY ./Models/*.csproj Models/
+COPY ./Repository/*.csproj Repository/
+COPY ./ovipraktarkezeloseged/*.csproj ovipraktarkezeloseged/
 
 RUN dotnet restore
 
