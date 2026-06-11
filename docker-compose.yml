@@ -17,9 +17,6 @@ services:
 
       ConnectionStrings__DefaultConnection: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD}
 
-    depends_on:
-      - db   # csak akkor jó, HA ugyanabban a compose-ban van DB is
-
     networks:
       - app-network
 
