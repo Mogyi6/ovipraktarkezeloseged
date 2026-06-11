@@ -1,14 +1,18 @@
+version: '3.8'
+
 services:
   api:
     build:
       context: .
-      dockerfile: OVIP_Seged_Raktarkezelo/Dockerfile
+      dockerfile: ovipraktarkezeloseged/Dockerfile
     ports:
       - "8080:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__DefaultConnection: Server=db;Port=3306;Database=${MYSQL_DATABASE};User=root;Password=${MYSQL_ROOT_PASSWORD}
+    networks:
+      - app-network
 
 networks:
   default:
