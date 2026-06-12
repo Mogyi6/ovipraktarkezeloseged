@@ -48,7 +48,7 @@ namespace ovipraktarkezeloseged.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] Category category)
         {
-            if (id != category.Id)
+            if (id != category.OvipCategoryId)
                 return BadRequest("ID mismatch");
 
             var success = await _categoryLogic.UpdateAsync(category);
